@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.parkmanager.view.TreeViewController"
+      spacing="10">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <HBox spacing="10">
+        <VBox spacing="10" minWidth="300">
+            <GridPane vgap="5" hgap="5">
+                <Label text="Baumart:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="speciesField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label text="Umfang (m):" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <TextField fx:id="circumferenceField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <Label text="Pflanzdatum:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <DatePicker fx:id="plantingDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                <Label text="Geschätztes Datum:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <CheckBox fx:id="estimatedDateCheckBox" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                <Label text="Zustand (1-10):" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <Spinner fx:id="conditionSpinner" min="1" max="10" initialValue="1" 
+                        editable="true" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+            </GridPane>
+
+            <HBox spacing="10">
+                <Button text="Speichern" onAction="#handleSave"/>
+                <Button text="Aktualisieren" onAction="#handleUpdate"/>
+                <Button text="Löschen" onAction="#handleDelete"/>
+                <Button text="Formular leeren" onAction="#handleClear"/>
+            </HBox>
+        </VBox>
+
+        <VBox spacing="10" HBox.hgrow="ALWAYS">
+            <TableView fx:id="treeTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="speciesColumn" text="Baumart"/>
+                    <TableColumn fx:id="circumferenceColumn" text="Umfang"/>
+                    <TableColumn fx:id="plantingDateColumn" text="Pflanzdatum"/>
+                    <TableColumn fx:id="estimatedDateColumn" text="Geschätzt"/>
+                    <TableColumn fx:id="conditionColumn" text="Zustand"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </HBox>
+</VBox> 
